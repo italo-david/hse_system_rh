@@ -1,0 +1,82 @@
+<section class="section">
+    <div class="section-header">
+        <h1>Adesivos</h1>        
+    </div>  
+</section>
+<section class="section"> 
+  <div class="card">
+    <div class="card-body">
+      <%= search_form_for @p do |f| %>
+       
+        <p></p>
+        <div class="input-group-btn">
+          <%= f.submit "Pesquisar", class:"btn btn-primary"%>
+        </div> 
+      <% end %>
+    </div>     
+  </div>  
+</section>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>Lista de Adesivos</h4>
+          <div class="card-header-action">
+            <%= link_to new_parking_path, class:"btn btn-icon icon-left btn-success" do %>
+                  <i class="fas fa-plus"></i> 
+            <% end %>
+            <%= render 'shared/card_dropdown' do %>
+              <%= link_to new_parking_path, class:"dropdown-item has-icon" do %>
+                    <i class="fas fa-download"></i> Download
+              <% end %>
+              <%= link_to new_parking_path, class:"dropdown-item has-icon" do %>
+                    <i class="fas fa-print"></i> Imprimir
+              <% end %>
+            <% end %>
+          </div>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col"><%= @parkings.human_attribute_name(:adhesive)%></th>
+                <th scope="col"><%= @parkings.human_attribute_name(:colaborattor)%></th>
+                <th scope="col"><%= @parkings.human_attribute_name(:vehicle)%></th>
+                <th scope="col"><%= @parkings.human_attribute_name(:board)%></th>
+                <th scope="col"><%= @parkings.human_attribute_name(:modelcar)%></th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @parkings.each do |parking| %>
+                <tr>
+                  <td><%= parking.adhesive %></td>
+                  <td><%= parking.colaborattor.colaborattorname unless parking.colaborattor.nil? %></td>
+                  <td><%= parking.vehicle %></td>
+                  <td><%= parking.board %></td>
+                  <td><%= parking.modelcar %></td>
+                  <td>
+                  <%= link_to parking_path(parking), class:"btn btn-icon btn-info" do %>
+                    <i class="fas fa-info-circle"></i>
+                  <% end %>
+                  <%= link_to edit_parking_path(parking), class:"btn btn-icon btn-primary" do %>
+                    <i class="far fa-edit"></i>
+                  <% end %>
+                  <%= link_to parking, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-icon btn-danger" do %>
+                    <i class="fas fa-times"></i>
+                  <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        
+        <div class="container pagination justify-content-center" >
+          <%= paginate @parkings, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
+        </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

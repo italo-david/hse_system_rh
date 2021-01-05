@@ -1,0 +1,82 @@
+<section class="section">
+    <div class="section-header">
+        <h1>Início</h1>      
+    </div>  
+</section>
+<div class="col-12 mb-4">
+  <div class="hero text-white hero-bg-image" data-background="<%= image_path 'hse-frente.JPG'%>" >
+    <div class="hero-inner">
+      <h2>Bem-vindo, <%= current_user.name %> !</h2>
+      <p class="lead">Consulte seus Dados de Perfil</p>
+      <div class="mt-4">
+        <%= link_to profile_path, class:"btn btn-outline-white btn-lg btn-icon icon-left" do %>
+          <i class="far fa-user"></i> Dados do Perfil
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="form-row">
+  <div class="col-12 col-md-6 col-lg-6">
+    <div class="card">
+      <div class="card-header">
+      <h4>História</h4>
+      </div>
+      <div class="card-body">
+        <p><strong>Sistema de Assistência à saúde dos Servidores do Estado de PE</strong></p>
+        <p>Pernambuco foi o primeiro Estado do Brasil a criar um instrumento próprio de assistência médica para o servidor público estadual, dentro das diretrizes determinadas pela Lei 9.717, de 27/11/98, do Poder Executivo Federal, que dispõe sobre regras gerais para a organização e o funcionamento dos regimes próprios de Previdência Social dos servidores públicos da União, dos Estados e dos Municípios.</p>
+        <p>O Sistema de Assistência à Saúde dos Servidores do Estado de Pernambuco (SASSEPE) foi criado pela Lei Complementar nº. 30, de 02/01/2001 e seu regulamento foi aprovado através do Decreto nº. 23.137, de 21/03/2001.</p>
+        <p>O SASSEPE destina-se à prestação de serviços de assistência à saúde aos servidores públicos estaduais e aos seus dependentes, no âmbito do estado de Pernambuco, tendo a função de realizar ações de medicina preventiva e curativa, ambulatorial e hospitalar, através de entidades, profissionais e hospitais credenciados e através de sua rede própria (HSE e treze Unidades Regionais).</p>
+        <p>Após a sua criação, o SASSEPE teve sua regulamentação alterada por algumas outras Leis Complementares: nº. 41, de 26/12/01, Art. 12º, nº. 43, de 02/05/02, Art.3º, nº. 52, de 07/11/03, nº. 63, de 15/12/04, Art. 12º e nº. 80, de 09/12/05.</p>
+        <p>O Regulamento do Sistema foi parcialmente alterado pelos Decretos: nº. 28.014, de 09/06/2005, e nº. 29.299, de 12/06/2006.</p>
+        <p>Todo o processo para a elaboração do Sistema de Assistência à Saúde dos Servidores do Estado de Pernambuco (SASSEPE) foi realizado em conjunto com entidades representativas dos servidores.</p>
+        <p>O SASSEPE é administrado e gerido pelo Instituto de Recursos Humanos de Pernambuco-IRH, e suas regras e coberturas são definidas pelo Conselho Deliberativo – CONDASPE, órgão superior, composto por oito membros, sendo quatro indicados pelo Governo e quatro indicados pelos sindicatos representantes dos servidores estaduais.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-6 col-lg-6">
+    <div class="card">
+      <div class="card-header">
+      <h4 class="text-center">Institucional</h4>
+      </div>
+      <div class="card-body">
+        <div id="accordion">
+          <div class="accordion">
+            <div class="accordion-header" role="button" data-toggle="collapse" data-target="#panel-body-1" aria-expanded="true">
+              <h4>Missão</h4>
+            </div>
+            <div class="accordion-body collapse show" id="panel-body-1" data-parent="#accordion">
+              <p class="mb-0">Prestar assistência hospitalar e ambulatorial aos servidores públicos estaduais e seus
+              dependentes, vinculados ao sassepe, com segurança, qualidade e compromisso social, de forma humanizada, para
+              garantir a saúde e bem estar de seus usuários.</p>
+            </div>
+          </div>
+          <div class="accordion">
+            <div class="accordion-header" role="button" data-toggle="collapse" data-target="#panel-body-2">
+              <h4>Visão</h4>
+            </div>
+            <div class="accordion-body collapse" id="panel-body-2" data-parent="#accordion">
+              <p class="mb-0">Ser reconhecido como modelo de gestão, na área de prestação de serviços de saúde, compartilhada com os 
+              servidores, contribuindo para a sustentabilidade financeira e eficiência do sassepe.</p>
+            </div>
+          </div>
+          <div class="accordion">
+            <div class="accordion-header" role="button" data-toggle="collapse" data-target="#panel-body-3">
+              <h4>Valores</h4>
+            </div>
+            <div class="accordion-body collapse" id="panel-body-3" data-parent="#accordion">
+              <p class="mb-0">
+                <ul>
+                  <li>Ética e Humanização</li>
+                  <li>Eficiência</li>
+                  <li>Qualidade e Segurança no cuidado</li>
+                  <li>Responsabilidade Ambiental</li>
+                </ul>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>    

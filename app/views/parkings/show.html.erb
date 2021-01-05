@@ -1,0 +1,91 @@
+<section class="section">
+    <div class="section-header">
+        <h1>Detalhes Adesivo</h1>        
+    </div>  
+</section>
+
+<div class="card">
+   <div class="card-body"> 
+      <%= form_with(model: @parking, local: true) do |form| %>
+        <div class="form-row">
+          <div class="form-group col-md-5">
+              <%= form.label :colaborattor_id, for:"inputColaborattor" %>
+            <div class="form-control">
+            <%= @parking.colaborattor.colaborattorname unless @parking.colaborattor.nil?%>
+            </div>
+          </div>
+          <div class="form-group col-md-2">
+            <%= form.label :adhesive, for:"inputAdhes"%>
+            <%= form.number_field :adhesive, id:"inputAdhes", class:"form-control" , disabled: 'disabled'%>
+          </div>
+          <div class="form-group col-md-3">
+            <%= form.label :stickerreceipt, for:"inputSticker"%>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fas fa-calendar"></i>
+                </div>
+              </div>
+            <%= form.date_field :stickerreceipt, id:"inputSticker", class:"form-control daterange-cus" , disabled: 'disabled'%>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-2">
+            <%= form.label :cnh, for:"inputCnh"%>
+            <%= form.text_field :cnh, id:"inputCnh", class:"form-control" , disabled: 'disabled'%>
+          </div>
+          <div class="form-group col-md-2">
+            <%= form.label :vehicle, for:"inputVehicle"%>
+            <%= form.text_field :vehicle, id:"inputVehicle", class:"form-control" , disabled: 'disabled'%>
+          </div>
+          <div class="form-group col-md-2">
+            <%= form.label :board, for:"inputBoard"%>
+            <%= form.text_field :board, id:"inputBoard", class:"form-control" , disabled: 'disabled'%>
+          </div>
+          <div class="form-group col-md-2">
+            <%= form.label :color, for:"inputColor"%>
+            <%= form.text_field :color, id:"inputColor", class:"form-control" , disabled: 'disabled'%>
+          </div>
+          <div class="form-group col-md-2">
+            <%= form.label :modelcar, for:"inputModel"%>
+            <%= form.text_field :modelcar, id:"inputModel", class:"form-control" , disabled: 'disabled'%>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-2">
+            <%= form.label :sei, for:"inputSei"%>
+            <%= form.text_field :sei, id:"inputSei", class:"form-control" , disabled: 'disabled'%>
+          </div>
+          <div class="form-group col-md-3">
+            <%= form.label :status, for:"inputStatus" %>
+            <div>
+              <%= form.collection_select(:status, options_for_status, :id, :description, {prompt:'Selecione..'}, class:"form-control", disabled: 'disabled' )%>
+            </div>
+          </div>
+          <div class="form-group col-md-5">
+            <%= form.label :extraadhesive, for:"inputExtra"%>
+            <%= form.text_field :extraadhesive, id:"inputExtra", class:"form-control", disabled: 'disabled' %>
+          </div>
+          
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-10">
+            <%= form.label :note, for:"inputNote"%>
+            <%= form.text_area :note, id:"inputNote", class:"form-control" , disabled: 'disabled' %>
+          </div>
+        </div>
+          <div class="card-footer">
+            <div class="form-group">
+              <%= link_to edit_parking_path, class:"btn btn-icon icon-left btn-warning" do %>
+                <i class="far fa-edit"></i> Editar
+              <% end %>
+              <%= link_to parkings_path, class:"btn btn-icon icon-left btn-secondary" do %>
+                <i class="fas fa-undo-alt"></i> Voltar
+              <% end %>
+            </div>
+          </div>
+
+      <% end %>
+  </div>
+</div>   

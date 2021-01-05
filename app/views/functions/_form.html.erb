@@ -1,0 +1,39 @@
+<div class="card">
+   <div class="card-body"> 
+      <%= form_with(model: function, local: true) do |form| %>
+        <% if function.errors.any? %>
+          <div class="alert alert-danger alert-dismissible show fade">
+            <div class="alert-title">Atenção!!</div>
+                <button class="close" data-dismiss="alert"><span>×</span></button>
+                <ul>
+                    <% function.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+
+          <div class="form-group">
+            <div class="form-group col-md-4">
+              <%= form.label :namefunction, for:"inputFunc"%>
+              <%= form.text_field :namefunction, id:"inputFunc", class:"form-control", placeholder:"Ex.: Técnico em Enfermagem" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :assignment, for:"inputAssig"%>
+            <%= form.text_area :assignment, id:"inputAssig", class:"form-control" %>
+          </div>
+
+          <div class="card-footer">
+            <div class="form-group">
+              <%= form.submit class:"btn btn-primary" %>
+              <%= link_to functions_path, class:"btn btn-icon icon-left btn-light" do %>
+                <i class="fas fa-undo-alt"></i> Voltar
+              <% end %>
+            </div>
+          </div>
+
+      <% end %>
+ </div>
+</div>

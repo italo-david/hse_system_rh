@@ -1,0 +1,32 @@
+<div class="card">
+   <div class="card-body"> 
+      <%= form_with(model: financial, local: true) do |form| %>
+        <% if financial.errors.any? %>
+          <div class="alert alert-danger alert-dismissible show fade">
+            <div class="alert-title">Atenção!!</div>
+                <button class="close" data-dismiss="alert"><span>×</span></button>
+                <ul>
+                    <% financial.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+
+          <div class="form-group">
+            <%= form.label :hourvalue, for:"inputhourv"%>
+            <%= form.text_field :hourvalue, id:"inputhourv", class:"form-control", placeholder:"Ex.: 12" %>
+          </div>
+
+          <div class="card-footer">
+            <div class="actions">
+              <%= form.submit class:"btn btn-primary" %>
+              <%= link_to financials_path, class:"btn btn-icon icon-left btn-light" do %>
+                <i class="fas fa-undo-alt"></i> Voltar
+              <% end %>
+            </div>
+          </div>
+
+      <% end %>
+ </div>
+</div>

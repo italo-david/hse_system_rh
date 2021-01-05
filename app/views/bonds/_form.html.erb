@@ -1,0 +1,55 @@
+ <div class="card">
+   <div class="card-body"> 
+      <%= form_with(model: bond, local: true) do |form| %>
+        <% if bond.errors.any? %>
+          <div class="alert alert-danger alert-dismissible show fade">
+            <div class="alert-title">Atenção!!</div>
+                <button class="close" data-dismiss="alert"><span>×</span></button>
+                <ul>
+                    <% bond.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                <%= form.label :company, for:"inputCompany"%>
+                <%= form.text_field :company, id:"inputCompany", class:"form-control", placeholder:"Insira o vínculo.." %>
+              </div>
+              <div class="form-group col-md-5">
+                <%= form.label :admission, for:"inputAdmis"%>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="fas fa-calendar"></i>
+                    </div>
+                  </div>
+                <%= form.date_field :admission, id:"inputAdmis", class:"form-control daterange-cus" %>
+                </div>
+              </div>
+          </div>
+          <div class="form-row">
+                <div class="form-group col-md-6">
+                  <%= form.label :description, for:"inputDescrip"%>
+                  <%= form.text_field :description, id:"inputDescrip", class:"form-control", placeholder:"Insira a Descrição.." %>
+                </div>
+                <div class="form-group col-md-6">
+                  <%= form.label :responsible, for:"inputRespon" %>
+                  <%= form.text_field :responsible, id:"inputRespon", class:"form-control", placeholder:"Nome do Reponsável"  %>
+                </div>
+          </div>
+
+          <div class="card-footer">
+            <div class="form-group">
+              <%= form.submit class:"btn btn-primary" %>
+              <%= link_to bonds_path, class:"btn btn-icon icon-left btn-light" do %>
+                <i class="fas fa-undo-alt"></i> Voltar
+              <% end %>
+            </div>
+          </div>
+
+      <% end %>
+ </div>
+</div>

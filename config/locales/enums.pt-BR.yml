@@ -1,0 +1,27 @@
+'pt-BR':
+  enums:
+    user:
+      role:
+        default: Padrão
+        papaya: Básico
+        manager: Admin
+      status:
+        active: Ativo
+        inactive: Inativo
+    colaborattor:
+      gender:
+        male: Masculino
+        female: Feminino
+      status:
+        active: Ativo
+        inactive: Inativo
+      pendecy:
+        complete: Completa
+        pending: Pendente
+      instruction:
+        middlelevel: Nível médio
+        higherlevel: Nível superior
+    parking:
+      status:
+        active: Ativo
+        inactive: Inativo

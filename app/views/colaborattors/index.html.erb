@@ -1,0 +1,113 @@
+<section class="section"> 
+    <div class="section-header">
+        <h1>Colaboradores</h1>
+        <div style="padding-left: 600px;">
+          <%= link_to new_colaborattor_path, class:"btn btn-icon icon-left btn-success" do %>
+              <i class="fas fa-plus"></i> Novo Colaborador
+          <% end %>
+        </div>        
+    </div>  
+</section>
+<section class="section"> 
+  <div class="card">
+    <div class="card-body">
+      <%= search_form_for @q do |f| %>
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            <%= f.label :colaborattorname_cont, "Nome colaborador" %>
+            <%= f.text_field :colaborattorname_cont, class:"form-control" %>
+          </div>
+          <div class="form-group col-md-3">
+            <%= f.label :bond_id_eq, "Vinculo" %>
+            <div>
+              <%= f.select(:bond_id_eq, options_from_collection_for_select(Bond.all, :id, :company), {:include_blank => "Selecione.."}, {:class => 'form-control'}) %>
+            </div> 
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <%= f.label :sector_id_eq, "Sector" %>
+            <div>
+              <%= f.select(:sector_id_eq, options_from_collection_for_select(Sector.all, :id, :description), {:include_blank => "Selecione.."}, {:class => 'form-control'}) %>
+            </div> 
+          </div>
+           <div class="form-group col-md-4">
+            <%= f.label :office_id_eq, "Cargo" %>
+            <div>
+              <%= f.select(:office_id_eq, options_from_collection_for_select(Office.all, :id, :description), {:include_blank => "Selecione.."}, {:class => 'form-control'}) %>
+            </div> 
+          </div>
+          <div class="form-group col-md-3">
+            <%= f.label :status_eq, "Status" %>
+            <div>
+              <%= f.select :status_eq, Colaborattor.statuses.to_a.map { |w| [w[0].humanize, w[1]] }, {:include_blank => "Selecione..."}, {:class => 'form-control'}%>
+            </div>  
+          </div>
+        </div>  
+        <div class="input-group-btn">
+          <%= f.submit "Pesquisar", class:"btn btn-primary"%>
+        </div> 
+      <% end %>
+    </div>     
+  </div>  
+</section>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Lista de Colaboradores</h4>
+          <div class="card-header-action">
+            <%= link_to new_colaborattor_path, class:"btn btn-icon icon-left btn-success" do %>
+                  <i class="fas fa-plus"></i>
+            <% end %>
+            <%= render 'shared/card_dropdown' do %>
+              <%= link_to new_colaborattor_path, class:"dropdown-item has-icon" do %>
+                    <i class="fas fa-download"></i> Download
+              <% end %>
+              <%= link_to new_colaborattor_path, class:"dropdown-item has-icon" do %>
+                    <i class="fas fa-print"></i> Imprimir
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col"><%= @colaborattors.human_attribute_name(:id) %></th>
+                  <th scope="col"><%= @colaborattors.human_attribute_name(:colaborattorname) %></th>
+                  <th scope="col"><%= @colaborattors.human_attribute_name(:sector_id) %></th>
+                  <th scope="col"><%= @colaborattors.human_attribute_name(:office_id) %></th>
+                  <th scope="col"><%= @colaborattors.human_attribute_name(:bond_id) %></th>
+                  <th scope="col"><%= @colaborattors.human_attribute_name(:status) %></th>
+                  <th scope="col">Ação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @colaborattors.each do |colaborattor| %>
+                  <tr>
+                    <td><%= colaborattor.id %></td>
+                    <td><%= colaborattor.colaborattorname %></td>
+                    <td><%= colaborattor.sector.description unless colaborattor.sector.nil? %></td>
+                    <td><%= colaborattor.office.description unless colaborattor.office.nil? %></td>
+                    <td><%= colaborattor.bond.company unless colaborattor.bond.nil? %></td>
+                    <td><%= colaborattor.status_i18n %></td>
+                    <td><%= link_to edit_colaborattor_path(colaborattor), class:"btn btn-icon btn-primary" do %>
+                      <i class="far fa-edit"></i>
+                    <% end %>
+                    <%= link_to colaborattor, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-icon btn-danger" do %>
+                      <i class="fas fa-times"></i>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <div class="container pagination justify-content-center" >
+              <%= paginate @colaborattors, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,59 @@
+<section class="section">
+    <div class="section-header">
+        <h1>Cargos</h1>        
+    </div>  
+</section>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+         <%= link_to new_office_path, class:"btn btn-icon icon-left btn-success" do %>
+                <i class="fas fa-plus"></i> Novo Cargo
+        <% end %>
+        <h4></h4>
+          <div class="card-header-form">
+          <%= form_with(url:search_path, local: true, method: :get) do |form| %>
+              <div class="input-group">
+              <%= form.text_field :term, class:"form-control", placeholder:"Search" %>
+                <div class="input-group-btn">
+                  <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col"><%= @offices.human_attribute_name(:id)%></th>
+                  <th scope="col"><%= @offices.human_attribute_name(:description)%></th>
+                  <th scope="col">Ação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @offices.each do |office| %>
+                  <tr>
+                    <td><%= office.id %></td>
+                    <td><%= office.description %></td>
+                    <td><%= link_to edit_office_path(office), class:"btn btn-icon btn-primary" do %>
+                      <i class="far fa-edit"></i>
+                    <% end %>
+                    <%= link_to office, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-icon btn-danger" do %>
+                      <i class="fas fa-times"></i>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          
+          <div class="container pagination justify-content-center" >
+            <%= paginate @offices, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
+          </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

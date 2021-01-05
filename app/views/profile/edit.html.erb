@@ -1,0 +1,51 @@
+<section class="section">
+    <div class="section-header">
+        <h1>Dados do Perfil</h1>        
+    </div>
+</section>
+<div class="card">
+    <div class="card-body">
+      <%= form_with(url: profile_path, model:@user , local:true) do |form|%>    
+        <div class="form-row">
+            <div class="form-group col-md-6">
+            <%= form.label :name, for:"inputName4"%>
+            <%= form.text_field :name, id:"inputName4", class:"form-control", placeholder:"nome completo"%>
+            </div>
+            <div class="form-group col-md-6">
+            <%= form.label :document, for:"inputIdentif4"%>
+            <%= form.text_field :document, id:"inputIdentif4", class:"form-control", placeholder:"nº identificação"%>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= form.label :email, for:"inputEmail"%>
+            <%= form.email_field :email, id:"inputEmail", class:"form-control", readonly: true %>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group col-md-6">
+            <%= form.label :password, for:"inputSenha"%>
+            <%= form.password_field :password, id:"inputSenha", class:"form-control"%>
+            </div>
+            <div class="form-group col-md-6">
+            <%= form.label :password_confirmation, for:"inputConfirm"%>
+            <%= form.password_field :password_confirmation, id:"inputConfirm", class:"form-control"%>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= form.label :notes, for:"inputObserva"%>
+            <%= form.text_area :notes, id:"inputObserva", class:"form-control", placeholder:"Insira sua Observação."%>
+        </div>
+
+          <div class="card-footer">
+            <div class="form-group">
+              <%= form.submit class:"btn btn-primary" %>
+               <%= link_to users_path, class:"btn btn-icon icon-left btn-light" do %>
+                <i class="fas fa-undo-alt"></i> Voltar
+              <% end %>
+            </div>
+          </div>
+        
+      <% end %>  
+    </div>
+   
+</div>
