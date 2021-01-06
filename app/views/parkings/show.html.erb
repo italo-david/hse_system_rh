@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-2">
+          <div class="form-group col-md-5">
             <%= form.label :sei, for:"inputSei"%>
             <%= form.text_field :sei, id:"inputSei", class:"form-control" , disabled: 'disabled'%>
           </div>
@@ -63,11 +63,6 @@
               <%= form.collection_select(:status, options_for_status, :id, :description, {prompt:'Selecione..'}, class:"form-control", disabled: 'disabled' )%>
             </div>
           </div>
-          <div class="form-group col-md-5">
-            <%= form.label :extraadhesive, for:"inputExtra"%>
-            <%= form.text_field :extraadhesive, id:"inputExtra", class:"form-control", disabled: 'disabled' %>
-          </div>
-          
         </div>
         <div class="form-row">
           <div class="form-group col-md-10">

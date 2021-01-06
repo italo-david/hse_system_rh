@@ -4,7 +4,8 @@ class OfficesController < WelcomeController
   # GET /offices
   # GET /offices.json
   def index
-    @offices = Office.all.page(params[:page])
+    @q = Office.ransack(params[:q])
+    @offices = @q.result.all.page(params[:page])
   end
 
   # GET /offices/1

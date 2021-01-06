@@ -6,9 +6,19 @@
 <section class="section"> 
   <div class="card">
     <div class="card-body">
-      <%= search_form_for @p do |f| %>
-       
-        <p></p>
+      <%= search_form_for @q do |f| %>
+       <div class="form-row">
+          <div class="form-group col-md-4">
+            <%= f.label :board_cont, "Placa" %>
+            <%= f.text_field :board_cont, class:"form-control" %>
+          </div>
+          <div class="form-group col-md-3">
+            <%= f.label :status_eq, "Status" %>
+            <div>
+              <%= f.select :status_eq, Parking.statuses.to_a.map { |w| [w[0].humanize, w[1]] }, {:include_blank => "Selecione..."}, {:class => 'form-control'}%>
+            </div>  
+          </div>
+        </div>  
         <div class="input-group-btn">
           <%= f.submit "Pesquisar", class:"btn btn-primary"%>
         </div> 
@@ -45,6 +55,7 @@
                 <th scope="col"><%= @parkings.human_attribute_name(:vehicle)%></th>
                 <th scope="col"><%= @parkings.human_attribute_name(:board)%></th>
                 <th scope="col"><%= @parkings.human_attribute_name(:modelcar)%></th>
+                <th scope="col"><%= @parkings.human_attribute_name(:status)%></th>
                 <th>Ação</th>
               </tr>
             </thead>
@@ -56,6 +67,7 @@
                   <td><%= parking.vehicle %></td>
                   <td><%= parking.board %></td>
                   <td><%= parking.modelcar %></td>
+                  <td><%= parking.status_i18n %></td>
                   <td>
                   <%= link_to parking_path(parking), class:"btn btn-icon btn-info" do %>
                     <i class="fas fa-info-circle"></i>

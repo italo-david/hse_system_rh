@@ -5,10 +5,8 @@ class ParkingsController < WelcomeController
   # GET /parkings
   # GET /parkings.json
   def index
-    @p = Parking.ransack(params[:p])
-    @parkings = @p.result.all.page(params[:page])
-    @p.build_condition if @p.conditions.empty?
-    @p.build_sort if @p.sorts.empty?
+    @q = Parking.ransack(params[:q])
+    @parkings = @q.result.all.page(params[:page])
   end
 
   # GET /parkings/1

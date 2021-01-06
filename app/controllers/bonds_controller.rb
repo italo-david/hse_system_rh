@@ -4,7 +4,8 @@ class BondsController < WelcomeController
   # GET /bonds
   # GET /bonds.json
   def index
-    @bonds = Bond.all.page(params[:page])
+    @q = Bond.ransack(params[:q])
+    @bonds = @q.result.all.page(params[:page])
   end
 
   # GET /bonds/1

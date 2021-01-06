@@ -3,24 +3,31 @@
         <h1>Cargos</h1>        
     </div>  
 </section>
+<section class="section"> 
+  <div class="card">
+    <div class="card-body">
+      <%= search_form_for @q do |f| %>
+       <div class="form-row">
+          <div class="form-group col-md-4">
+            <%= f.label :description_cont, "Cargo" %>
+            <%= f.text_field :description_cont, class:"form-control" %>
+          </div>
+        </div>  
+        <div class="input-group-btn">
+          <%= f.submit "Pesquisar", class:"btn btn-primary"%>
+        </div> 
+      <% end %>
+    </div>     
+  </div>  
+</section>
   <div class="row">
     <div class="col-12">
       <div class="card">
         <div class="card-header">
          <%= link_to new_office_path, class:"btn btn-icon icon-left btn-success" do %>
                 <i class="fas fa-plus"></i> Novo Cargo
-        <% end %>
-        <h4></h4>
-          <div class="card-header-form">
-          <%= form_with(url:search_path, local: true, method: :get) do |form| %>
-              <div class="input-group">
-              <%= form.text_field :term, class:"form-control", placeholder:"Search" %>
-                <div class="input-group-btn">
-                  <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                </div>
-              </div>
-            <% end %>
-          </div>
+          <% end %>
+          <h4></h4>
         </div>
         <div class="card-body p-0">
           <div class="table-responsive">

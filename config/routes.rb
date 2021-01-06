@@ -18,7 +18,6 @@ Rails.application.routes.draw do
 
   get 'graphics/index'
   get 'zip_code', to:'zip_code#show'
-  get 'search', to: 'search#index'
   get 'welcome/index'
   get 'profile', to:'profile#edit'
   patch 'profile', to:'profile#update'

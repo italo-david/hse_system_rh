@@ -1,5 +1,9 @@
 class Parking < ApplicationRecord
+  STATUSES = {:active => 0, :inactive => 1}
+  
   belongs_to :colaborattor
+
+  enum status: STATUSES
 
   UNRANSACKABLE_ATTRIBUTES = ["created_at", "updated_at"]
 

@@ -4,7 +4,8 @@ class FunctionsController < WelcomeController
   # GET /functions
   # GET /functions.json
   def index
-    @functions = Function.all.page(params[:page])
+    @q = Function.ransack(params[:q])
+    @functions = @q.result.all.page(params[:page])
   end
 
   # GET /functions/1
