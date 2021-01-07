@@ -1,5 +1,5 @@
 class FunctionsController < WelcomeController
-  before_action :set_function, only: [:show, :edit, :update, :destroy]
+  before_action :set_function, only: [ :edit, :update, :destroy]
 
   # GET /functions
   # GET /functions.json
@@ -10,9 +10,7 @@ class FunctionsController < WelcomeController
 
   # GET /functions/1
   # GET /functions/1.json
-  def show
-  end
-
+  
   # GET /functions/new
   def new
     @function = Function.new
@@ -29,7 +27,7 @@ class FunctionsController < WelcomeController
 
     respond_to do |format|
       if @function.save
-        format.html { redirect_to @function, notice: 'Function was successfully created.' }
+        format.html { redirect_to functions_path, notice: 'Function was successfully created.' }
         format.json { render :show, status: :created, location: @function }
       else
         format.html { render :new }
@@ -43,7 +41,7 @@ class FunctionsController < WelcomeController
   def update
     respond_to do |format|
       if @function.update(function_params)
-        format.html { redirect_to @function, notice: 'Function was successfully updated.' }
+        format.html { redirect_to functions_path, notice: 'Function was successfully updated.' }
         format.json { render :show, status: :ok, location: @function }
       else
         format.html { render :edit }

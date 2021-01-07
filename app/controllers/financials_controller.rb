@@ -1,5 +1,5 @@
 class FinancialsController < WelcomeController
-  before_action :set_financial, only: [:show, :edit, :update, :destroy]
+  before_action :set_financial, only: [ :edit, :update, :destroy]
 
   # GET /financials
   # GET /financials.json
@@ -9,9 +9,7 @@ class FinancialsController < WelcomeController
 
   # GET /financials/1
   # GET /financials/1.json
-  def show
-  end
-
+  
   # GET /financials/new
   def new
     @financial = Financial.new
@@ -28,7 +26,7 @@ class FinancialsController < WelcomeController
 
     respond_to do |format|
       if @financial.save
-        format.html { redirect_to @financial, notice: 'Financial was successfully created.' }
+        format.html { redirect_to financials_path, notice: 'Financial was successfully created.' }
         format.json { render :show, status: :created, location: @financial }
       else
         format.html { render :new }
@@ -42,7 +40,7 @@ class FinancialsController < WelcomeController
   def update
     respond_to do |format|
       if @financial.update(financial_params)
-        format.html { redirect_to @financial, notice: 'Financial was successfully updated.' }
+        format.html { redirect_to financials_path, notice: 'Financial was successfully updated.' }
         format.json { render :show, status: :ok, location: @financial }
       else
         format.html { render :edit }

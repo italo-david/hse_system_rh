@@ -1,5 +1,5 @@
 class SchedulesController < WelcomeController
-  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :set_schedule, only: [ :edit, :update, :destroy]
 
   # GET /schedules
   # GET /schedules.json
@@ -9,8 +9,6 @@ class SchedulesController < WelcomeController
 
   # GET /schedules/1
   # GET /schedules/1.json
-  def show
-  end
 
   # GET /schedules/new
   def new
@@ -28,7 +26,7 @@ class SchedulesController < WelcomeController
 
     respond_to do |format|
       if @schedule.save
-        format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
+        format.html { redirect_to schedules_path, notice: 'Schedule was successfully created.' }
         format.json { render :show, status: :created, location: @schedule }
       else
         format.html { render :new }
@@ -42,7 +40,7 @@ class SchedulesController < WelcomeController
   def update
     respond_to do |format|
       if @schedule.update(schedule_params)
-        format.html { redirect_to @schedule, notice: 'Schedule was successfully updated.' }
+        format.html { redirect_to schedules_path, notice: 'Schedule was successfully updated.' }
         format.json { render :show, status: :ok, location: @schedule }
       else
         format.html { render :edit }

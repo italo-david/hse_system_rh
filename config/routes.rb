@@ -2,19 +2,19 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
 
-  devise_for :users
+  devise_for :users, :skip => [:registrations]
   
-  resources :colaborattors
+  resources :colaborattors, except: [:show]
 
   resources :parkings 
-  resources :sectors
-  resources :offices
-  resources :daily_hours
-  resources :bonds
-  resources :schedules
-  resources :functions
-  resources :financials
-  resources :users
+  resources :sectors, except: [:show]
+  resources :offices, except: [:show]
+  resources :daily_hours, except: [:show]
+  resources :bonds, except: [:show]
+  resources :schedules, except: [:show]
+  resources :functions, except: [:show]
+  resources :financials, except: [:show]
+  resources :users, except: [:show]
 
   get 'graphics/index'
   get 'zip_code', to:'zip_code#show'

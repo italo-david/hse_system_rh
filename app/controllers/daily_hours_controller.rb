@@ -1,5 +1,5 @@
 class DailyHoursController < WelcomeController
-  before_action :set_daily_hour, only: [:show, :edit, :update, :destroy]
+  before_action :set_daily_hour, only: [:edit, :update, :destroy]
 
   # GET /daily_hours
   # GET /daily_hours.json
@@ -9,9 +9,7 @@ class DailyHoursController < WelcomeController
 
   # GET /daily_hours/1
   # GET /daily_hours/1.json
-  def show
-  end
-
+ 
   # GET /daily_hours/new
   def new
     @daily_hour = DailyHour.new
@@ -28,7 +26,7 @@ class DailyHoursController < WelcomeController
 
     respond_to do |format|
       if @daily_hour.save
-        format.html { redirect_to @daily_hour, notice: 'Daily hour was successfully created.' }
+        format.html { redirect_to daily_hours_path, notice: 'Daily hour was successfully created.' }
         format.json { render :show, status: :created, location: @daily_hour }
       else
         format.html { render :new }
@@ -42,7 +40,7 @@ class DailyHoursController < WelcomeController
   def update
     respond_to do |format|
       if @daily_hour.update(daily_hour_params)
-        format.html { redirect_to @daily_hour, notice: 'Daily hour was successfully updated.' }
+        format.html { redirect_to daily_hours_path, notice: 'Daily hour was successfully updated.' }
         format.json { render :show, status: :ok, location: @daily_hour }
       else
         format.html { render :edit }

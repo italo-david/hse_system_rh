@@ -1,5 +1,5 @@
 class BondsController < WelcomeController
-  before_action :set_bond, only: [:show, :edit, :update, :destroy]
+  before_action :set_bond, only: [:edit, :update, :destroy]
 
   # GET /bonds
   # GET /bonds.json
@@ -10,8 +10,6 @@ class BondsController < WelcomeController
 
   # GET /bonds/1
   # GET /bonds/1.json
-  def show
-  end
 
   # GET /bonds/new
   def new
@@ -29,7 +27,7 @@ class BondsController < WelcomeController
 
     respond_to do |format|
       if @bond.save
-        format.html { redirect_to @bond, notice: 'Bond was successfully created.' }
+        format.html { redirect_to bonds_path, notice: 'Bond was successfully created.' }
         format.json { render :show, status: :created, location: @bond }
       else
         format.html { render :new }
@@ -43,7 +41,7 @@ class BondsController < WelcomeController
   def update
     respond_to do |format|
       if @bond.update(bond_params)
-        format.html { redirect_to @bond, notice: 'Bond was successfully updated.' }
+        format.html { redirect_to bonds_path, notice: 'Bond was successfully updated.' }
         format.json { render :show, status: :ok, location: @bond }
       else
         format.html { render :edit }

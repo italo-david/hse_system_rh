@@ -1,5 +1,5 @@
 class UsersController < WelcomeController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [ :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -9,9 +9,6 @@ class UsersController < WelcomeController
 
   # GET /users/1
   # GET /users/1.json
-  def show
-  end
-
   # GET /users/new
   def new
     @user = User.new
@@ -28,7 +25,7 @@ class UsersController < WelcomeController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to users_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -42,7 +39,7 @@ class UsersController < WelcomeController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to users_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -69,6 +66,6 @@ class UsersController < WelcomeController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :document, :role, :status, :notes)
+      params.require(:user).permit(:name, :document, :role, :status, :notes, :email, :password, :password_confirmation)
     end
 end

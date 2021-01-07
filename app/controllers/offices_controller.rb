@@ -1,5 +1,5 @@
 class OfficesController < WelcomeController
-  before_action :set_office, only: [:show, :edit, :update, :destroy]
+  before_action :set_office, only: [ :edit, :update, :destroy]
 
   # GET /offices
   # GET /offices.json
@@ -10,9 +10,7 @@ class OfficesController < WelcomeController
 
   # GET /offices/1
   # GET /offices/1.json
-  def show
-  end
-
+  
   # GET /offices/new
   def new
     @office = Office.new
@@ -29,7 +27,7 @@ class OfficesController < WelcomeController
 
     respond_to do |format|
       if @office.save
-        format.html { redirect_to @office, notice: 'Office was successfully created.' }
+        format.html { redirect_to offices_path, notice: 'Office was successfully created.' }
         format.json { render :show, status: :created, location: @office }
       else
         format.html { render :new }
@@ -43,7 +41,7 @@ class OfficesController < WelcomeController
   def update
     respond_to do |format|
       if @office.update(office_params)
-        format.html { redirect_to @office, notice: 'Office was successfully updated.' }
+        format.html { redirect_to offices_path, notice: 'Office was successfully updated.' }
         format.json { render :show, status: :ok, location: @office }
       else
         format.html { render :edit }
