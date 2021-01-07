@@ -41,6 +41,7 @@ gem 'bootstrap_form'
 gem 'bootstrap4-kaminari-views'
 gem 'groupdate'
 gem 'ransack'
+gem 'webpacker'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
