@@ -85,7 +85,6 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.7)
-    connection_pool (2.2.3)
     crass (1.0.6)
     devise (4.7.3)
       bcrypt (~> 3.0)
@@ -146,18 +145,15 @@ GEM
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
+    pg (1.2.3)
     popper_js (1.16.0)
     public_suffix (4.0.6)
     puma (3.12.6)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
     rack (2.2.3)
-    rack-protection (2.1.0)
-      rack
-    rack-ratelimit (1.1.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rack-timeout (0.6.0)
     rails (5.2.4.4)
       actioncable (= 5.2.4.4)
       actionmailer (= 5.2.4.4)
@@ -193,7 +189,6 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redis (4.2.5)
     regexp_parser (1.8.2)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -214,11 +209,6 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    sidekiq (5.2.7)
-      connection_pool (~> 2.2, >= 2.2.2)
-      rack (>= 1.5.0)
-      rack-protection (>= 1.5.0)
-      redis (>= 3.3.5, < 5)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -274,17 +264,14 @@ DEPENDENCIES
   kaminari-i18n
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.4.4, < 0.6.0)
+  pg
   puma (~> 3.11)
   pundit
-  rack-ratelimit
-  rack-timeout
   rails (~> 5.2.4, >= 5.2.4.4)
   rails-i18n (~> 5.1)
   ransack
-  redis
   sass-rails (~> 5.0)
   selenium-webdriver
-  sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
   tty-spinner
