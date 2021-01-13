@@ -1,9 +1,11 @@
-<section class="section">
-    <div class="section-header">
-        <h1>Funções</h1>        
-    </div>  
-</section>
-<section class="section"> 
+<div class="section-header">
+    <h1>Funções</h1>
+    <div class="section-header-breadcrumb">
+        <div class="breadcrumb-item"><%= link_to 'Início', root_path %></div>
+        <div class="breadcrumb-item">Listando Funções</div>
+    </div>         
+</div>  
+<section class="section-body"> 
   <div class="card">
     <div class="card-body">
       <%= search_form_for @q do |f| %>
@@ -19,48 +21,44 @@
       <% end %>
     </div>     
   </div>  
-</section>
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header">
-         <%= link_to new_function_path, class:"btn btn-icon icon-left btn-success" do %>
-                <i class="fas fa-plus"></i> Novo Função
-          <% end %>
-          <h4></h4>
-        </div>
-        <div class="card-body p-0">
-          <div class="table-responsive">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col"><%= @functions.human_attribute_name(:id)%></th>
-                  <th scope="col"><%= @functions.human_attribute_name(:namefunction)%></th>
-                  <th>Ação</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @functions.each do |function| %>
-                  <tr>
-                    <td><%= function.id %></td>
-                    <td><%= function.namefunction %></td>
-                    <td><%= link_to edit_function_path(function), class:"btn btn-icon btn-primary" do %>
-                      <i class="far fa-edit"></i>
-                    <% end %>
-                    <%= link_to function, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-icon btn-danger" do %>
-                      <i class="fas fa-times"></i>
-                    <% end %>
-                  </tr>
+  <div class="card">
+    <div class="card-header">
+      <h4>Listando Funções</h4>
+      <div class="card-header-action">
+        <%= link_to new_function_path, class:"btn btn-icon icon-left btn-success" do %>
+          <i class="fas fa-plus"></i> Novo Função
+        <% end %>
+      </div>  
+    </div>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col"><%= @functions.human_attribute_name(:id)%></th>
+              <th scope="col"><%= @functions.human_attribute_name(:namefunction)%></th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @functions.each do |function| %>
+              <tr>
+                <td><%= function.id %></td>
+                <td><%= function.namefunction %></td>
+                <td><%= link_to edit_function_path(function), class:"btn btn-icon btn-primary" do %>
+                  <i class="far fa-edit"></i>
                 <% end %>
-              </tbody>
-            </table>
-          
-          <div class="container pagination justify-content-center" >
-            <%= paginate @functions, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
-          </div>
-            
-          </div>
+                <%= link_to function, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-icon btn-danger" do %>
+                  <i class="fas fa-times"></i>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="container pagination justify-content-center" >
+          <%= paginate @functions, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
         </div>
       </div>
     </div>
   </div>
+</section>

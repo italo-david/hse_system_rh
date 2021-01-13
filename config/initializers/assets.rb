@@ -14,6 +14,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 #App/assets
 Rails.application.config.assets.precompile += %w( welcome.js welcome.css
+                                                  user_devise.js user_devise.css
                                                   hse.ico
                                                   hse-frente.jpg)
 

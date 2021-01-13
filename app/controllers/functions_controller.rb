@@ -27,7 +27,7 @@ class FunctionsController < WelcomeController
 
     respond_to do |format|
       if @function.save
-        format.html { redirect_to functions_path, notice: 'Function was successfully created.' }
+        format.html { redirect_to functions_path, notice: I18n.t('messages.created_with', item: @function.namefunction) }
         format.json { render :show, status: :created, location: @function }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class FunctionsController < WelcomeController
   def update
     respond_to do |format|
       if @function.update(function_params)
-        format.html { redirect_to functions_path, notice: 'Function was successfully updated.' }
+        format.html { redirect_to functions_path, notice: I18n.t('messages.updated_with', item: @function.namefunction) }
         format.json { render :show, status: :ok, location: @function }
       else
         format.html { render :edit }
@@ -55,7 +55,7 @@ class FunctionsController < WelcomeController
   def destroy
     @function.destroy
     respond_to do |format|
-      format.html { redirect_to functions_url, notice: 'Function was successfully destroyed.' }
+      format.html { redirect_to functions_url, notice: I18n.t('messages.destroyed_with', item: @function.namefunction) }
       format.json { head :no_content }
     end
   end

@@ -8,7 +8,7 @@ class ProfileController < WelcomeController
   def update
       if @user.update(params_user)
         bypass_sign_in(@user)
-        redirect_to profile_path, notice: "Usuário atualizado com sucesso!"
+        redirect_to profile_path, notice: I18n.t('messages.updated_with', item: @user.name)
       else
         render :edit
       end

@@ -1,16 +1,12 @@
 class Parking < ApplicationRecord
+  validates :adhesive, :board, presence: true
+
   STATUSES = {:active => 0, :inactive => 1}
   
-  belongs_to :colaborattor
+  belongs_to :colaborattor, optional: true
 
   enum status: STATUSES
 
-  UNRANSACKABLE_ATTRIBUTES = ["created_at", "updated_at"]
-
-  def self.ransackable_attributes auth_object = nil
-    (column_names - UNRANSACKABLE_ATTRIBUTES) + _ransackers.keys
-  end
-  
   #KAMINARI
   paginates_per 5
 end

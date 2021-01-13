@@ -11,18 +11,18 @@ class CreateColaborattors < ActiveRecord::Migration[5.2]
       t.string :phone
       t.string :email
       t.date :birthdate
-      t.string :gender
+      t.integer :gender
       t.string :identify
       t.string :cpf
-      t.string :instruction
+      t.integer :instruction
       t.string :professionalqualification
       t.string :classcouncilregistration
       t.integer :crm
       t.integer :status
       t.text :notes
       t.integer :pendecy
+      t.integer :daily_hour
       t.references :bond, foreign_key: true
-      t.references :daily_hour, foreign_key: true
       t.references :financial, foreign_key: true
       t.references :function, foreign_key: true
       t.references :schedule, foreign_key: true

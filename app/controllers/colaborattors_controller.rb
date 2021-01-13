@@ -1,7 +1,6 @@
 class ColaborattorsController < WelcomeController
   before_action :set_colaborattor, only: [:edit, :update, :destroy]
   before_action :set_bond_options, only: [:new, :create, :edit, :update]
-  before_action :set_dailyhour_options, only: [:new, :create, :edit, :update]
   before_action :set_financial_options, only: [:new, :create, :edit, :update]
   before_action :set_function_options, only: [:new, :create, :edit, :update]
   before_action :set_schedule_options, only: [:new, :create, :edit, :update]
@@ -68,9 +67,6 @@ class ColaborattorsController < WelcomeController
     def set_bond_options
       @bond_options = Bond.all.pluck(:company, :id)
     end
-    def set_dailyhour_options
-      @dailyhour_options = DailyHour.all.pluck(:shift, :id)
-    end
     def set_financial_options
       @financial_options = Financial.all.pluck(:hourvalue, :id)
     end
@@ -93,6 +89,6 @@ class ColaborattorsController < WelcomeController
 
     # Only allow a list of trusted parameters through.
     def colaborattor_params
-      params.require(:colaborattor).permit(:colaborattorname, :matriculation, :admission, :address,:zip_code, :homenumber, :cellphone, :phone, :email, :birthdate, :gender, :identify, :cpf, :instruction, :professionalqualification, :classcouncilregistration, :crm, :status, :notes, :pendecy, :bond_id, :daily_hour_id, :financial_id, :function_id, :responsibilitie_id, :schedule_id, :sector_id, :office_id)
+      params.require(:colaborattor).permit(:colaborattorname, :matriculation, :admission, :address,:zip_code, :homenumber, :cellphone, :phone, :email, :birthdate, :gender, :identify, :cpf, :instruction, :professionalqualification, :classcouncilregistration, :crm, :status, :notes, :pendecy, :daily_hour, :bond_id, :financial_id, :function_id, :responsibilitie_id, :schedule_id, :sector_id, :office_id)
     end
 end

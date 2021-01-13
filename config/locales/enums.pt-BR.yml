@@ -21,6 +21,9 @@
       instruction:
         middlelevel: Nível médio
         higherlevel: Nível superior
+      daily_hour:
+        onduty: Plantão
+        daylaborer: Diarista
     parking:
       status:
         active: Ativo

@@ -16,21 +16,21 @@
               <ul class="nav nav-tabs" id="myTab5" role="tablist">
                 <li class="nav-item">
                   <a class="nav-link active" id="home-tab5" data-toggle="tab" href="#home5" role="tab" aria-controls="home" aria-selected="true">
-                    <i class="fas fa-user"></i> Dados Pessoais</a>
+                    <i class="fas fa-user"></i>Dados Pessoais</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" id="profile-tab5" data-toggle="tab" href="#profile5" role="tab" aria-controls="profile" aria-selected="false">
-                    <i class="fas fa-id-card"></i> Empresa</a>
+                    <i class="fas fa-id-card"></i>Empresa</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" id="contact-tab5" data-toggle="tab" href="#contact5" role="tab" aria-controls="contact" aria-selected="false">
-                    <i class="fas fa-clipboard"></i> Adicional</a>
+                    <i class="fas fa-clipboard"></i>Adicional</a>
                 </li>
               </ul>
               <div class="tab-content" id="myTabContent5">
                 <div class="tab-pane fade active show" id="home5" role="tabpanel" aria-labelledby="home-tab5">
                   <div class="form-row">
-                      <div class="form-group col-md-5">
+                      <div class="form-group col-md-6">
                         <%= form.label :colaborattorname, for:"inputColabname"%>
                         <%= form.text_field :colaborattorname, id:"inputColabname", class:"form-control", placeholder:"Nome Completo (Sem abreviações)" %>
                       </div>
@@ -48,32 +48,32 @@
                       <div class="form-group col-md-3">
                         <%= form.label :gender, for:"inputGender" %>
                         <div>
-                          <%= form.collection_select(:gender, options_for_genders, :id, :description, {prompt:'Selecione..'}, class:"form-control")%>
+                          <%= form.collection_select(:gender, options_for_gender, :id, :description, {prompt:'Selecione..'}, class:"form-control")%>
                         </div>
                       </div>
                     </div>
                     <div class="form-row">
-                      <div class="form-group col-md-5">
+                      <div class="form-group col-md-6">
                         <%= form.label :email, for:"inputEmail"%>
                         <%= form.text_field :email, id:"inputEmail", class:"form-control", placeholder:"Ex.: info@gmail.com" %>
                       </div>
                       <div class="form-group col-md-3">
                         <%= form.label :cellphone, for:"inputCellphone" %>
-                        <%= form.text_field :cellphone, id:"inputCellphone", class:"form-control", placeholder:"(xx) 9xxxx-xxxx"  %>
+                        <%= form.text_field :cellphone, id:"inputCellphone", class:"form-control",'data-mask': '(99) 99999-9999', placeholder:"(xx) 9xxxx-xxxx"  %>
                       </div>
                       <div class="form-group col-md-3">
                         <%= form.label :phone, for:"inputphone" %>
-                        <%= form.text_field :phone, id:"inputphone", class:"form-control", placeholder:"(xx) 9xxxx-xxxx"  %>
+                        <%= form.text_field :phone, id:"inputphone", class:"form-control",'data-mask': '(99) 9999-9999', placeholder:"(xx) 9xxxx-xxxx"  %>
                       </div>
                     </div>
                     <div class="form-row">
-                      <div class="form-group col-md-2">
+                      <div class="form-group col-md-3">
                         <%= form.label :identify, for:"inputIdentify"%>
-                        <%= form.text_field :identify, id:"inputIdentify", class:"form-control", placeholder:"Nº Identificação" %>
+                        <%= form.text_field :identify, id:"inputIdentify", class:"form-control",'data-mask': '99999999/AAA/AA', placeholder:"00000000/SDS/PE" %>
                       </div>
                       <div class="form-group col-md-3">
                         <%= form.label :cpf, for:"inputCpf" %>
-                        <%= form.text_field :cpf, id:"inputCpf", class:"form-control", placeholder:"000.000.000-00"  %>
+                        <%= form.text_field :cpf, id:"inputCpf", class:"form-control",'data-mask': '999.999.999-99', placeholder:"000.000.000-00" %>
                       </div>
                       <div class="form-group col-md-3">
                         <%= form.label :classcouncilregistration, for:"inputClasscouncilregis" %>
@@ -103,7 +103,7 @@
                           zip_code_link.href = '<%= zip_code_path %>/?zip_code='+zip_code_input.value;
                         });
                       </script>
-                      <div class="form-group col-md-5">
+                      <div class="form-group col-md-6">
                         <%= form.label :address, for:"inputAddress"%>
                         <%= form.text_field :address, id:"inputAddress", class:"form-control", placeholder:"Endereço Completo" %>
                       </div>
@@ -119,7 +119,7 @@
                           <%= form.collection_select(:instruction, options_for_instructions, :id, :description, {prompt:'Selecione..'}, class:"form-control")%>
                         </div>
                       </div>
-                      <div class="form-group col-md-7">
+                      <div class="form-group col-md-8">
                         <%= form.label :professionalqualification, for:"inputProfessionalq"%>
                         <%= form.text_field :professionalqualification, id:"inputProfessionalq", class:"form-control", placeholder:"Ex.: (Medicina, Engenharia, Etc.)" %>
                       </div>
@@ -127,6 +127,10 @@
                 </div>
                 <div class="tab-pane fade" id="profile5" role="tabpanel" aria-labelledby="profile-tab5">
                   <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <%= form.label :matriculation, for:"inputMatricula" %>
+                      <%= form.text_field :matriculation, id:"inputMatricula", class:"form-control", placeholder:"Nº matrícula"  %>
+                    </div>
                     <div class="form-group col-md-3">
                       <%= form.label :admission, for:"inputAdmis"%>
                       <div class="input-group">
@@ -139,47 +143,24 @@
                       </div>
                     </div>
                     <div class="form-group col-md-3">
-                      <%= form.label :bond_id %>
-                        <div>
-                        <%= form.select("bond_id", @bond_options, {include_blank: "Selecione.."}, class:"form-control") %>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-2">
-                      <%= form.label :matriculation, for:"inputMatricula" %>
-                      <%= form.text_field :matriculation, id:"inputMatricula", class:"form-control", placeholder:"Nº matrícula"  %>
-                    </div>
-                    <div class="form-group col-md-3">
-                      <%= form.label :sector_id, for:"inputSector" %>
-                      <div>
-                      <%= form.select("sector_id", @sectors_options, {include_blank: "Selecione.."}, class:"form-control") %>
-                      </div>
-                    </div>
-                  </div> 
-                  <div class="form-row">
-                    <div class="form-group col-md-3">
                       <%= form.label :status, for:"inputStatus" %>
                       <div>
                         <%= form.collection_select(:status, options_for_status, :id, :description, {prompt:'Selecione..'}, class:"form-control")%>
                       </div>
                     </div>
+                  </div> 
+                  <div class="form-row">
+                    
                     <div class="form-group col-md-3">
-                      <%= form.label :pendecy, for:"inputPendecy" %>
+                      <%= form.label :bond_id %>
                         <div>
-                          <%= form.collection_select(:pendecy, options_for_pendecies, :id, :description, {prompt:'Selecione..'}, class:"form-control")%>
+                        <%= form.select("bond_id", @bond_options, {include_blank: "Selecione.."}, class:"form-control") %>
                         </div>
                     </div>
-                  </div>
-                  <div class="form-row">
                     <div class="form-group col-md-3">
-                      <%= form.label :daily_hour_id, for:"inputdailly" %>
+                      <%= form.label :office_id, for:"inputOffic" %>
                       <div>
-                      <%= form.select("daily_hour_id", @dailyhour_options, {include_blank: "Selecione.."}, class:"form-control") %>
-                      </div>
-                    </div>
-                    <div class="form-group col-md-3">
-                      <%= form.label :financial_id, for:"inputFinan" %>
-                      <div>
-                      <%= form.select("financial_id", @financial_options, {include_blank: "Selecione.."}, class:"form-control") %>
+                      <%= form.select("office_id", @office_options, {include_blank: "Selecione.."}, class:"form-control") %>
                       </div>
                     </div>
                     <div class="form-group col-md-3">
@@ -188,12 +169,24 @@
                       <%= form.select("function_id", @function_options, {include_blank: "Selecione.."}, class:"form-control") %>
                       </div>
                     </div>
+                    <div class="form-group col-md-3">
+                      <%= form.label :financial_id, for:"inputFinan" %>
+                      <div>
+                      <%= form.select("financial_id", @financial_options, {include_blank: "Selecione.."}, class:"form-control") %>
+                      </div>
+                    </div>
                   </div>
                   <div class="form-row">
                     <div class="form-group col-md-3">
-                      <%= form.label :office_id, for:"inputOffic" %>
+                      <%= form.label :sector_id, for:"inputSector" %>
                       <div>
-                      <%= form.select("office_id", @office_options, {include_blank: "Selecione.."}, class:"form-control") %>
+                      <%= form.select("sector_id", @sectors_options, {include_blank: "Selecione.."}, class:"form-control") %>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <%= form.label :daily_hour, for:"inputDailyho" %>
+                      <div>
+                        <%= form.collection_select(:daily_hour, options_for_daily_hours, :id, :description, {prompt:'Selecione..'}, class:"form-control")%>
                       </div>
                     </div>
                     <div class="form-group col-md-3">
@@ -201,6 +194,12 @@
                       <div>
                       <%= form.select("schedule_id", @schedule_options, {include_blank: "Selecione.."}, class:"form-control") %>
                       </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <%= form.label :pendecy, for:"inputPendecy" %>
+                        <div>
+                          <%= form.collection_select(:pendecy, options_for_pendecies, :id, :description, {prompt:'Selecione..'}, class:"form-control")%>
+                        </div>
                     </div>
                   </div>
                 </div>

@@ -26,7 +26,7 @@ class SchedulesController < WelcomeController
 
     respond_to do |format|
       if @schedule.save
-        format.html { redirect_to schedules_path, notice: 'Schedule was successfully created.' }
+        format.html { redirect_to schedules_path, notice: I18n.t('messages.created_with', item: @schedule.typo) }
         format.json { render :show, status: :created, location: @schedule }
       else
         format.html { render :new }
@@ -40,7 +40,7 @@ class SchedulesController < WelcomeController
   def update
     respond_to do |format|
       if @schedule.update(schedule_params)
-        format.html { redirect_to schedules_path, notice: 'Schedule was successfully updated.' }
+        format.html { redirect_to schedules_path, notice: I18n.t('messages.updated_with', item: @schedule.typo) }
         format.json { render :show, status: :ok, location: @schedule }
       else
         format.html { render :edit }
@@ -54,7 +54,7 @@ class SchedulesController < WelcomeController
   def destroy
     @schedule.destroy
     respond_to do |format|
-      format.html { redirect_to schedules_url, notice: 'Schedule was successfully destroyed.' }
+      format.html { redirect_to schedules_url, notice: I18n.t('messages.destroyed_with', item: @schedule.typo) }
       format.json { head :no_content }
     end
   end

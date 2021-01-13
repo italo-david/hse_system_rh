@@ -9,7 +9,7 @@ module UsersHelper
   end
 
   def options_for_status
-    Colaborattor.statuses_i18n.map do |key, value|
+    User.statuses_i18n.map do |key, value|
     OptionsForStatuses.new(key,value)
     end
   end

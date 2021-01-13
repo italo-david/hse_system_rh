@@ -1,55 +1,51 @@
-<section class="section">
-    <div class="section-header">
-        <h1>Usuários</h1>        
-    </div>  
-</section>
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header">
-            <%= link_to new_user_path, class:"btn btn-icon icon-left btn-success" do %>
-                  <i class="fas fa-plus"></i> Novo Usuário
-            <% end %> 
-          <h4></h4>
-        </div>
-        <div class="card-body p-0">
-          <div class="table-responsive">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col"><%= @users.human_attribute_name(:id)%></th>
-                  <th scope="col"><%= @users.human_attribute_name(:name)%></th>
-                  <th scope="col"><%= @users.human_attribute_name(:role)%></th>
-                  <th scope="col"><%= @users.human_attribute_name(:status)%></th>
-                  <th scope="col"><%= @users.human_attribute_name(:email)%></th>
-                  <th>Ação</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @users.each do |user| %>
-                  <tr>
-                    <td><%= user.id %></td>
-                    <td><%= user.name %></td>
-                    <td><%= user.role_i18n %></td>
-                    <td><%= user.status_i18n%></td>
-                    <td><%= user.email %></td>
-                    <td><%= link_to edit_user_path(user), class:"btn btn-icon btn-primary" do %>
-                      <i class="far fa-edit"></i>
-                    <% end %>
-                    <%= link_to user, method: :delete, data: { confirm: t('messages.confirm_with', item: user.name) }, class:"btn btn-icon btn-danger" do %>
-                      <i class="fas fa-times"></i>
-                    <% end %>
-                  </tr>
+<div class="section-header">
+    <h1>Usuários</h1>        
+</div>
+<section class="section-body">  
+  <div class="card">
+    <div class="card-header">
+      <h4>Listando Usuários</h4>
+      <div class="card-header-action">
+        <%= link_to new_user_path, class:"btn btn-icon icon-left btn-success" do %>
+          <i class="fas fa-plus"></i> Novo Usuário
+        <% end %> 
+      </div>  
+    </div>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col"><%= @users.human_attribute_name(:id)%></th>
+              <th scope="col"><%= @users.human_attribute_name(:name)%></th>
+              <th scope="col"><%= @users.human_attribute_name(:status)%></th>
+              <th scope="col"><%= @users.human_attribute_name(:email)%></th>
+              <th scope="col"><%= @users.human_attribute_name(:role)%></th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= user.id %></td>
+                <td><%= user.name %></td>
+                <td><%= user.status_i18n%></td>
+                <td><%= user.email %></td>
+                <td><%= user.role_i18n %></td>
+                <td><%= link_to edit_user_path(user), class:"btn btn-icon btn-primary" do %>
+                  <i class="far fa-edit"></i>
                 <% end %>
-              </tbody>
-            </table>
-          
-          <div class="container pagination justify-content-center" >
-            <%= paginate @users, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
-          </div>
-            
-          </div>
+                <%= link_to user, method: :delete, data: { confirm: t('messages.confirm_with', item: user.name) }, class:"btn btn-icon btn-danger" do %>
+                  <i class="fas fa-times"></i>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="container pagination justify-content-center" >
+          <%= paginate @users, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
         </div>
       </div>
     </div>
   </div>
+</section>      

@@ -32,18 +32,18 @@ ActiveRecord::Schema.define(version: 2020_12_28_185344) do
     t.string "phone"
     t.string "email"
     t.date "birthdate"
-    t.string "gender"
+    t.integer "gender"
     t.string "identify"
     t.string "cpf"
-    t.string "instruction"
+    t.integer "instruction"
     t.string "professionalqualification"
     t.string "classcouncilregistration"
     t.integer "crm"
     t.integer "status"
     t.text "notes"
     t.integer "pendecy"
+    t.integer "daily_hour"
     t.bigint "bond_id"
-    t.bigint "daily_hour_id"
     t.bigint "financial_id"
     t.bigint "function_id"
     t.bigint "schedule_id"
@@ -52,19 +52,11 @@ ActiveRecord::Schema.define(version: 2020_12_28_185344) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bond_id"], name: "index_colaborattors_on_bond_id"
-    t.index ["daily_hour_id"], name: "index_colaborattors_on_daily_hour_id"
     t.index ["financial_id"], name: "index_colaborattors_on_financial_id"
     t.index ["function_id"], name: "index_colaborattors_on_function_id"
     t.index ["office_id"], name: "index_colaborattors_on_office_id"
     t.index ["schedule_id"], name: "index_colaborattors_on_schedule_id"
     t.index ["sector_id"], name: "index_colaborattors_on_sector_id"
-  end
-
-  create_table "daily_hours", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "shift"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "financials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -115,10 +107,9 @@ ActiveRecord::Schema.define(version: 2020_12_28_185344) do
     t.string "description"
     t.string "initials"
     t.string "parentsector"
-    t.bigint "colaborattor_id"
+    t.string "collaboratorresp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["colaborattor_id"], name: "index_sectors_on_colaborattor_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -139,7 +130,6 @@ ActiveRecord::Schema.define(version: 2020_12_28_185344) do
   end
 
   add_foreign_key "colaborattors", "bonds"
-  add_foreign_key "colaborattors", "daily_hours"
   add_foreign_key "colaborattors", "financials"
   add_foreign_key "colaborattors", "functions"
   add_foreign_key "colaborattors", "offices"

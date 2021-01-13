@@ -14,15 +14,27 @@
         <% end %>
 
         <div class="form-row">
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-3">
+            <%= form.label :adhesive, for:"inputAdhes"%>
+            <%= form.number_field :adhesive, id:"inputAdhes", class:"form-control" , placeholder:"Nº Adesivo"%>
+          </div>
+          <div class="form-group col-md-8">
               <%= form.label :colaborattor_id, for:"inputColaborattor" %>
             <div>
               <%= form.select("colaborattor_id", @colaborattors_options, {include_blank: "Selecione.."}, class:"form-control") %>
             </div>
           </div>
-          <div class="form-group col-md-2">
-            <%= form.label :adhesive, for:"inputAdhes"%>
-            <%= form.number_field :adhesive, id:"inputAdhes", class:"form-control" , placeholder:"Nº Adesivo"%>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <%= form.label :sei, for:"inputSei"%>
+            <%= form.text_field :sei, id:"inputSei", class:"form-control" , placeholder:"Nº do SEI"%>
+          </div>
+          <div class="form-group col-md-3">
+            <%= form.label :status, for:"inputStatus" %>
+            <div>
+              <%= form.collection_select(:status, options_for_status, :id, :description, {prompt:'Selecione..'}, class:"form-control")%>
+            </div>
           </div>
           <div class="form-group col-md-3">
             <%= form.label :stickerreceipt, for:"inputSticker"%>
@@ -56,18 +68,6 @@
           <div class="form-group col-md-2">
             <%= form.label :modelcar, for:"inputModel"%>
             <%= form.text_field :modelcar, id:"inputModel", class:"form-control" , placeholder:"Ex.: Hillux"%>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-3">
-            <%= form.label :sei, for:"inputSei"%>
-            <%= form.text_field :sei, id:"inputSei", class:"form-control" , placeholder:"Nº do SEI"%>
-          </div>
-          <div class="form-group col-md-3">
-            <%= form.label :status, for:"inputStatus" %>
-            <div>
-              <%= form.collection_select(:status, options_for_status, :id, :description, {prompt:'Selecione..'}, class:"form-control")%>
-            </div>
           </div>
         </div>
         <div class="form-row">

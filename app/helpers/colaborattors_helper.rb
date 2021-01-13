@@ -4,8 +4,9 @@ module ColaborattorsHelper
   OptionsForStatuses = Struct.new(:id, :description)
   OptionsForPendecies = Struct.new(:id, :description)
   OptionsForInstructions = Struct.new(:id, :description)
+  OptionsForDailyhours = Struct.new(:id, :description)
 
-  def options_for_genders
+  def options_for_gender
     Colaborattor.genders_i18n.map do |key, value|
     OptionsForGenders.new(key,value)
     end
@@ -30,5 +31,12 @@ module ColaborattorsHelper
     OptionsForInstructions.new(key,value)
     end
   end
+
+  def options_for_daily_hours
+    Colaborattor.daily_hours_i18n.map do |key, value|
+      OptionsForDailyhours.new(key,value)
+    end
+  end
+
 end
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Recursos Humanos</title>
+  <title>HSE | RH</title>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,17 +11,17 @@
     <%= stylesheet_link_tag    'application' %>
     <%= stylesheet_link_tag    'welcome' %>
     
+    <%= favicon_link_tag asset_path('hse.ico')%>
 </head>
 
 <body>
   <div id="app">
-    <div class="main-wrapper">
+    <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
       <nav class="navbar navbar-expand-lg main-navbar">
         <form class="form-inline mr-auto">
           <ul class="navbar-nav mr-3">
             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
-            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
           </ul>
         </form>
         <ul class="navbar-nav navbar-right">
@@ -46,7 +46,7 @@
       <div class="main-sidebar" style="overflow: hidden; outline: currentcolor none medium;" tabindex="1">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-          <%= image_tag 'logo.png', alt:"logo", width:"150", height:"53", class:"shadow-light" %>
+            <%= image_tag 'logo.png', alt:"logo", width:"150", height:"53", class:"shadow-light" %>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
             <%= link_to 'RH', welcome_index_path %>
@@ -54,8 +54,8 @@
           
             <ul class="sidebar-menu">
               <li class="menu-header">Dashboard</li>
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span> Dashboard</span></a>
+              <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                 <ul class="dropdown-menu">
                   <li><%= link_to 'Dashboard', welcome_index_path %></li> 
                 </ul>
@@ -64,40 +64,31 @@
               <li>
                 <%= link_to welcome_index_path, class:"nav-link" do %>
                   <i class="fas fa-home"></i>
-                  <span>&nbsp Inicio</span>
+                  <span>Inicio</span>
                 <% end %>
               </li>
               <li class="menu-header">Recursos Humanos</li>
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-users"></i> <span>&nbsp Quadro Funcional</span></a>
+              <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-users"></i> <span>Quadro Funcional</span></a>
                 <ul class="dropdown-menu" style="display: none;">
                     <li>
                       <%= link_to 'Colaboradores', colaborattors_path, class:"nav-link" %>
                      </li>
                   </ul>
               </li>
-              <li class="nav-item dropdown">
-                  <a href="#" class="nav-link has-dropdown"><i class="fas fa-car"></i> <span>&nbsp Estacionamento</span></a>
+              <li class="dropdown">
+                  <a href="#" class="nav-link has-dropdown"><i class="fas fa-car"></i> <span>Estacionamento</span></a>
                   <ul class="dropdown-menu">
                     <li>
                       <%= link_to 'Adesivos', parkings_path, class:"nav-link" %>
                     </li>
                   </ul>
               </li>
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-clipboard-list"></i> <span> &nbsp Atribuições</span></a>
+              <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-clipboard-list"></i> <span>Atribuições</span></a>
                 <ul class="dropdown-menu" style="display: none;">
                   <li>
-                    <%= link_to 'Setores', sectors_path, class:"nav-link" %>
-                  </li>
-                  <li>
-                    <%= link_to 'Horários', daily_hours_path, class:"nav-link" %>
-                  </li>
-                  <li>
                     <%= link_to 'Cargos', offices_path, class:"nav-link" %>
-                  </li>
-                  <li>
-                    <%= link_to 'Vinculos', bonds_path, class:"nav-link"  %>
                   </li>
                   <li>
                     <%= link_to 'Escalas', schedules_path, class:"nav-link" %>
@@ -106,16 +97,22 @@
                     <%= link_to 'Funções', functions_path, class:"nav-link" %>
                   </li>
                   <li>
+                    <%= link_to 'Setores', sectors_path, class:"nav-link" %>
+                  </li>
+                  <li>
                     <%= link_to 'Valores', financials_path, class:"nav-link" %>
+                  </li>
+                  <li>
+                    <%= link_to 'Vinculos', bonds_path, class:"nav-link"  %>
                   </li>
                 </ul>
               </li>
               <li class="menu-header">Administração</li>
-                <li class="nav-item dropdown">
-                  <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>&nbsp Gerenciar</span></a>
+                <li class="dropdown">
+                  <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Gerenciar</span></a>
                   <ul class="dropdown-menu">
                     <li>
-                        <%= link_to 'Usuários', users_path, class:"beep beep-sidebar"  %>
+                        <%= link_to 'Usuários', users_path, class:"nav-link"  %>
                     </li>
                   </ul>
               </li>
@@ -124,10 +121,12 @@
       </div>
 
       <!-- Main Content -->
-      <div class="main-content">
-          
+      <div class="main-content style="min-height: 572px;">
+        <section class="section">
            <%= yield %>
+        </section>   
       </div>
+
       <footer class="main-footer">
         <div class="footer-left">
           Copyright &copy; 2020 <div class="bullet"></div> Design By Italo David
@@ -136,22 +135,23 @@
           1.0.0
         </div>
       </footer>
+
     </div>
   </div>
 
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_include_tag 'welcome' %>
-      
-    <% if notice %>
-        <%= javascript_tag do %>
-            $.bootstrapGrowl('<%= notice %>', {
-            type: 'success', // (null, 'info', 'danger', 'success')
-            align: 'right', // ('left', 'right', or 'center')
-            allow_dismiss: true, // If true then will display a cross to close the popup.
-            stackup_spacing: 10 // spacing between consecutively stacked growls.
-            });
-        <% end %>
-    <% end %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'welcome' %>
+    
+  <% if notice %>
+      <%= javascript_tag do %>
+          $.bootstrapGrowl('<%= notice %>', {
+          type: 'success', // (null, 'info', 'danger', 'success')
+          align: 'right', // ('left', 'right', or 'center')
+          allow_dismiss: true, // If true then will display a cross to close the popup.
+          stackup_spacing: 10 // spacing between consecutively stacked growls.
+          });
+      <% end %>
+  <% end %>
  
   <!-- Page Specific JS File -->
 </body>

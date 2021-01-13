@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+      <title>Login | HSE</title>
+
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+
+      <%= stylesheet_link_tag    'application' %>
+      <%= stylesheet_link_tag    'user_devise'%>
+
+      <%= favicon_link_tag asset_path('hse.ico')%>
+  </head>
+  <body>
+
+  <div id="app">
+    <section class="section">
+          <%= yield %>
+    </section>  
+  </div>
+    <%= javascript_include_tag 'application'%>
+    <%= javascript_include_tag 'user_devise'%>
+
+  <% if flash %>
+        <% flash.each do |key, value| %>
+          <%= javascript_tag do %>
+              $.bootstrapGrowl('<%= value %>', {
+              type: 'danger', // (null, 'info', 'danger', 'success')
+              allow_dismiss: true, // If true then will display a cross to close the popup.
+              align: 'right', // ('left', 'right', or 'center')
+              stackup_spacing: 10 // spacing between consecutively stacked growls.
+              });
+          <% end %>
+        <% end %>
+    <% end %>
+
+  </body>
+</html>

@@ -1,13 +1,11 @@
-<section class="section">
-    <div class="section-header">
-      <h1>Editando Colaborador</h1>
-      <div class="section-header-breadcrumb">
-        <div class="breadcrumb-item"><%= link_to 'Dashboard', root_path %></div>
-        <div class="breadcrumb-item"><%= link_to 'Colaborators', colaborattors_path %></div>
-        <div class="breadcrumb-item">Show Colaborators</div>
-      </div>
-    </div>
-</section>
+<div class="section-header">
+  <h1>Editando Colaborador</h1>
+  <div class="section-header-breadcrumb">
+    <div class="breadcrumb-item"><%= link_to 'Início', root_path %></div>
+    <div class="breadcrumb-item"><%= link_to 'Colaboradores', colaborattors_path %></div>
+    <div class="breadcrumb-item">Editando Colaborador</div>
+  </div>
+</div>
 
 <%= render 'form', colaborattor: @colaborattor %>
 

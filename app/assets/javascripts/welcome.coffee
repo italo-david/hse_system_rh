@@ -10,3 +10,6 @@
 //= require scripts
 //= require custom
 //= require bootstrap-growl-ifightcrime/jquery.bootstrap-growl
+//= require jquery-mask-plugin/dist/jquery.mask
+
+$.jMaskGlobals.watchDataMask = true;

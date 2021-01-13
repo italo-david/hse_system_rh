@@ -25,9 +25,6 @@
       financial:
         one: Financeiro
         other: Financeiro
-      daily_hour:
-        one: Horário
-        other: Horário
       bond:
         one: Vinculo
         other: Vinculos
@@ -50,7 +47,7 @@
         description: Descrição
         initials: Sigla
         parentsector: Setor Pai
-        colaborattor_id: Colaborador Responsável
+        collaboratorresp: Colaborador Responsável
       schedule:
         id: ID
         typo: Tipo
@@ -91,8 +88,9 @@
         address: Endereço
         homenumber: Nº Residência
         admission: Data de Admissão
-        identify: Identificação
+        identify: Nº Identidade
         instruction: Instrução
+        daily_hour: Horário
         professionalqualification: Formação Profissional
         notes: Observação
         pendecy: Situação Cadastral
@@ -100,7 +98,6 @@
         office_id: Cargo
         function_id: Função
         schedule_id: Escala
-        daily_hour_id: Horário
         financial_id: Financeiro
         bond_id: Vinculo
       function:
@@ -110,10 +107,6 @@
       financial:
         id: ID
         hourvalue: Valor da hora
-      daily_hour:
-        id: ID
-        shift: Plantão/Diarista
-        description: Descrição
       bond:
         id: ID
         company: Empresa

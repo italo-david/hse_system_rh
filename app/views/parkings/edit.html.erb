@@ -1,8 +1,11 @@
-<section class="section">
-    <div class="section-header">
-        <h1>Editando Adesivo</h1>        
-    </div>  
-</section>
+<div class="section-header">
+    <h1>Editando Adesivo</h1>
+    <div class="section-header-breadcrumb">
+        <div class="breadcrumb-item"><%= link_to 'Início', root_path %></div>
+        <div class="breadcrumb-item"><%= link_to 'Adesivos', parkings_path %></div>
+        <div class="breadcrumb-item">Editando Adesivo</div>
+    </div>            
+</div>  
 
 <%= render 'form', parking: @parking %>
 

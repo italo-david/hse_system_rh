@@ -27,7 +27,7 @@ class BondsController < WelcomeController
 
     respond_to do |format|
       if @bond.save
-        format.html { redirect_to bonds_path, notice: 'Bond was successfully created.' }
+        format.html { redirect_to bonds_path, notice: I18n.t('messages.created_with', item: @bond.company) }
         format.json { render :show, status: :created, location: @bond }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class BondsController < WelcomeController
   def update
     respond_to do |format|
       if @bond.update(bond_params)
-        format.html { redirect_to bonds_path, notice: 'Bond was successfully updated.' }
+        format.html { redirect_to bonds_path, notice: I18n.t('messages.updated_with', item: @bond.company) }
         format.json { render :show, status: :ok, location: @bond }
       else
         format.html { render :edit }
@@ -55,7 +55,7 @@ class BondsController < WelcomeController
   def destroy
     @bond.destroy
     respond_to do |format|
-      format.html { redirect_to bonds_url, notice: 'Bond was successfully destroyed.' }
+      format.html { redirect_to bonds_url, notice: I18n.t('messages.destroyed_with', item: @bond.company) }
       format.json { head :no_content }
     end
   end

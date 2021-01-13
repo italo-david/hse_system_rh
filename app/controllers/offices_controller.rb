@@ -27,7 +27,7 @@ class OfficesController < WelcomeController
 
     respond_to do |format|
       if @office.save
-        format.html { redirect_to offices_path, notice: 'Office was successfully created.' }
+        format.html { redirect_to offices_path, notice: I18n.t('messages.created_with', item: @office.description) }
         format.json { render :show, status: :created, location: @office }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class OfficesController < WelcomeController
   def update
     respond_to do |format|
       if @office.update(office_params)
-        format.html { redirect_to offices_path, notice: 'Office was successfully updated.' }
+        format.html { redirect_to offices_path, notice: I18n.t('messages.updated_with', item: @office.description) }
         format.json { render :show, status: :ok, location: @office }
       else
         format.html { render :edit }
@@ -55,7 +55,7 @@ class OfficesController < WelcomeController
   def destroy
     @office.destroy
     respond_to do |format|
-      format.html { redirect_to offices_url, notice: 'Office was successfully destroyed.' }
+      format.html { redirect_to offices_url, notice: I18n.t('messages.destroyed_with', item: @office.description) }
       format.json { head :no_content }
     end
   end

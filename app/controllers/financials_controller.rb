@@ -26,7 +26,7 @@ class FinancialsController < WelcomeController
 
     respond_to do |format|
       if @financial.save
-        format.html { redirect_to financials_path, notice: 'Financial was successfully created.' }
+        format.html { redirect_to financials_path, notice: I18n.t('messages.created') }
         format.json { render :show, status: :created, location: @financial }
       else
         format.html { render :new }
@@ -40,7 +40,7 @@ class FinancialsController < WelcomeController
   def update
     respond_to do |format|
       if @financial.update(financial_params)
-        format.html { redirect_to financials_path, notice: 'Financial was successfully updated.' }
+        format.html { redirect_to financials_path, notice: I18n.t('messages.updated') }
         format.json { render :show, status: :ok, location: @financial }
       else
         format.html { render :edit }
@@ -54,7 +54,7 @@ class FinancialsController < WelcomeController
   def destroy
     @financial.destroy
     respond_to do |format|
-      format.html { redirect_to financials_url, notice: 'Financial was successfully destroyed.' }
+      format.html { redirect_to financials_url, notice: I18n.t('messages.destroyed') }
       format.json { head :no_content }
     end
   end

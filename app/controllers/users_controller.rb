@@ -1,5 +1,7 @@
 class UsersController < WelcomeController
+  before_action :verify_password, only: [:update]
   before_action :set_user, only: [ :edit, :update, :destroy]
+
 
   # GET /users
   # GET /users.json
@@ -25,7 +27,7 @@ class UsersController < WelcomeController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to users_path, notice: 'User was successfully created.' }
+        format.html { redirect_to users_path, notice: I18n.t('messages.created_with', item: @user.name) }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -39,7 +41,7 @@ class UsersController < WelcomeController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to users_path, notice: 'User was successfully updated.' }
+        format.html { redirect_to users_path, notice: I18n.t('messages.updated_with', item: @user.name) }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -53,10 +55,11 @@ class UsersController < WelcomeController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: I18n.t('messages.destroyed_with', item: @user.name) }
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -68,4 +71,11 @@ class UsersController < WelcomeController
     def user_params
       params.require(:user).permit(:name, :document, :role, :status, :notes, :email, :password, :password_confirmation)
     end
+
+    def verify_password
+      if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+        params[:user].extract!(:password, :password_confirmation)
+      end
+    end
+
 end

@@ -19,10 +19,8 @@
               <%= form.text_field :description, id:"inputDescrip", class:"form-control", placeholder:"Insira o Setor.." %>
             </div>
             <div class="form-group col-md-6">
-              <%= form.label :colaborattor_id, for:"inputColaborattor" %>
-              <div>
-              <%= form.select("colaborattor_id", @colaborattors_options, {include_blank: "Selecione.."}, class:"form-control") %>
-              </div>
+              <%= form.label :collaboratorresp, for:"inputColaborattor" %>
+              <%= form.text_field :collaboratorresp, id:"inputDescrip", class:"form-control", placeholder:"Insira o nome do Colaborador" %>
             </div>
           </div>
           <div class="form-row">

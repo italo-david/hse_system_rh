@@ -4,7 +4,7 @@ class CreateSectors < ActiveRecord::Migration[5.2]
       t.string :description
       t.string :initials
       t.string :parentsector
-      t.references :colaborattor
+      t.string :collaboratorresp
 
       t.timestamps
     end

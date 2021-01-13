@@ -1,7 +1,5 @@
 class SectorsController < WelcomeController
   before_action :set_sector, only: [:edit, :update, :destroy]
-  before_action :set_colaborattor_options, only: [:new, :create, :edit, :update]
-
 
   # GET /sectors
   # GET /sectors.json
@@ -25,7 +23,7 @@ class SectorsController < WelcomeController
 
     respond_to do |format|
       if @sector.save
-        format.html { redirect_to sectors_path, notice: I18n.t('messages.created_with_ad', item: @sector.description)  }
+        format.html { redirect_to sectors_path, notice: I18n.t('messages.created_with', item: @sector.description)  }
         format.json { render :show, status: :created, location: @sector }
       else
         format.html { render :new }
@@ -39,7 +37,7 @@ class SectorsController < WelcomeController
   def update
     respond_to do |format|
       if @sector.update(sector_params)
-        format.html { redirect_to sectors_path, notice: I18n.t('messages.updated_with_ad', item: @sector.description) }
+        format.html { redirect_to sectors_path, notice: I18n.t('messages.updated_with', item: @sector.description) }
         format.json { render :show, status: :ok, location: @sector }
       else
         format.html { render :edit }
@@ -53,16 +51,14 @@ class SectorsController < WelcomeController
   def destroy
     @sector.destroy
     respond_to do |format|
-      format.html { redirect_to sectors_url, notice: I18n.t('messages.destroyed_with_ad', item: @sector.description) }
+      format.html { redirect_to sectors_url, notice: I18n.t('messages.destroyed_with', item: @sector.description) }
       format.json { head :no_content }
     end
   end
 
   private
 
-    def set_colaborattor_options
-      @colaborattors_options = Colaborattor.all.pluck(:colaborattorname, :id)
-    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_sector
       @sector = Sector.find(params[:id])
@@ -70,6 +66,6 @@ class SectorsController < WelcomeController
 
     # Only allow a list of trusted parameters through.
     def sector_params
-      params.require(:sector).permit(:description, :initials, :parentsector, :colaborattor_id)
+      params.require(:sector).permit(:description, :initials, :parentsector, :collaboratorresp)
     end
 end

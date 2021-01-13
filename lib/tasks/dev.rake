@@ -12,21 +12,12 @@ namespace :dev do
         show_spinner("Cadastrando os administradores extras...") { %x(rails dev:add_extra_admins) }
         show_spinner("Cadastrando os usuários padrões...") { %x(rails dev:add_extra_users) }
         show_spinner("Cadastrando os usuários mamão...") { %x(rails dev:add_extra_papaya) }
-        show_spinner("Cadastrando os colaboradores...") { %x(rails dev:add_colaborattors) }
-        show_spinner("Adicionar Função...") { %x(rails dev:add_function) }
-        show_spinner("Adicionar Função Extra...") { %x(rails dev:add_function_extra) }
-        show_spinner("Adicionar Cargo...") { %x(rails dev:add_office) }
-        show_spinner("Adicionar Cargo Extra...") { %x(rails dev:add_office_extra) }
-        show_spinner("Adicionar Valor da hora...") { %x(rails dev:add_financial) }
-        show_spinner("Adicionar Valor da hora Extra...") { %x(rails dev:add_financial_extra) }
-        show_spinner("Adicionar Vinculo...") { %x(rails dev:add_bond) }
-        show_spinner("Adicionar Vinculo Extra...") { %x(rails dev:add_bond_extra) }
-        show_spinner("Adicionar Setor...") { %x(rails dev:add_sector) }
-        show_spinner("Adicionar Setor Extra...") { %x(rails dev:add_sector_extra) } 
-        show_spinner("Adicionar Escala...") { %x(rails dev:add_schedule) } 
-        show_spinner("Adicionar Escala Extra...") { %x(rails dev:add_schedule_extra) }
-        show_spinner("Adicionar Horário...") { %x(rails dev:add_dailyhour) }
-        show_spinner("Adicionar Horário Extra...") { %x(rails dev:add_dailyhour_extra) }
+        show_spinner("Adicionando Funções...") { %x(rails dev:add_function) }
+        show_spinner("Adicionando Cargos...") { %x(rails dev:add_office) }
+        show_spinner("Adicionando Valores de hora...") { %x(rails dev:add_financial) }
+        show_spinner("Adicionando Vinculos...") { %x(rails dev:add_bond) }
+        show_spinner("Adicionando Escalas...") { %x(rails dev:add_schedule) } 
+        show_spinner("Adicionando Setores...") { %x(rails dev:add_sector) } 
       else
         puts "Você não está em ambiente de desenvolvimento!"
       end
@@ -91,134 +82,66 @@ namespace :dev do
     end
   end
 
-  dates_list = []
-  10.times do
-    dates_list << Time.now - rand(1..365).day
-  end
-
-  desc "Adiciona colaboradores "
-  task add_colaborattors: :environment do
-    50.times do |i|
-      Colaborattor.create!(
-        colaborattorname: Faker::Name.name,
-        birthdate: dates_list.sample,
-        gender: %i[male female].sample,
-        email: Faker::Internet.email,
-        status: %i[active inactive].sample,
-        instruction: %i[middlelevel higherlevel].sample,
-        pendecy: %i[complete pending].sample
-      )
-    end
-  end
-
   desc "Adicionar Função"
   task add_function: :environment do
+    10.times do |i|
       Function.create!(
-        namefunction: 'Técnico em enfermagem' 
+        namefunction: Faker::Job.field 
       )
+    end  
   end
 
-  desc "Adicionar Função Extra "
-  task add_function_extra: :environment do
-      Function.create!(
-        namefunction: 'Analista de RH' 
-      )
-  end
 
-  desc "Adicionar Cargo "
+  desc "Adicionar Cargo"
   task add_office: :environment do
+    10.times do |i|
       Office.create!(
-        description: 'Analista' 
+        description: Faker::Job.position
       )
-  end
-
-  desc "Adicionar Cargo Extra"
-  task add_office_extra: :environment do
-      Office.create!(
-        description: 'Técnico' 
-      )
+    end  
   end
 
   desc "Adicionar Valor da Hora"
   task add_financial: :environment do
+    10.times do |i|
       Financial.create!(
-        hourvalue: '8,00'
+        hourvalue: Faker::Number.within(range: 8..20)
       )
-  end
-
-  desc "Adicionar Valor da Hora extra"
-  task add_financial_extra: :environment do
-      Financial.create!(
-        hourvalue: '12,00'
-      )
+    end  
   end
 
   desc "Adicionar Vinculo"
   task add_bond: :environment do
+    10.times do |i|
       Bond.create!(
-        company: 'Coopvita',
-        description: 'Cooperativa ADM',
-        responsible: 'Antonio'
+        company: Faker::Company.name,
+        description: Faker::Company.type,
+        responsible: Faker::DcComics.hero,
+        admission: Faker::Date.in_date_period
       )
-  end
-
-  desc "Adicionar Vinculo extra"
-  task add_bond_extra: :environment do
-      Bond.create!(
-        company: 'Coopsersa',
-        description: 'Cooperativa ENF',
-        responsible: 'Samara'
-      )
-  end
-
-  desc "Adicionar Setor"
-  task add_sector: :environment do
-      Sector.create!(
-        description: 'Recursos Humanos',
-        initials: 'APES',
-        parentsector: 'GADH'
-      )
-  end
-
-  desc "Adicionar Setor extra"
-  task add_sector_extra: :environment do
-      Sector.create!(
-        description: 'Informatica',
-        initials: 'NATI',
-        parentsector: 'GADH'
-      )
+    end  
   end
 
   desc "Adicionar Escala"
   task add_schedule: :environment do
+    10.times do |i|
       Schedule.create!(
-        typo: '12x36',
-        description: 'Plantão'
+        typo: Faker::Job.employment_type,
+        description: Faker::Job.education_level
       )
+    end  
   end
 
-  desc "Adicionar Escala Extra"
-  task add_schedule_extra: :environment do
-      Schedule.create!(
-        typo: '8x5',
-        description: 'Diarista'
+  desc "Adicionar Setor"
+  task add_sector: :environment do
+    10.times do |i|
+      Sector.create!(
+        description: Faker::Job.employment_type,
+        initials: Faker::Name.initials,
+        parentsector: Faker::Name.initials,
+        collaboratorresp: Faker::DcComics.hero
       )
-  end
-
-  desc "Adicionar Horário"
-  task add_dailyhour: :environment do
-      DailyHour.create!(
-        shift: 'Plantão',
-        description: 'Colaborador Plantonista'
-      )
-  end
-
-  desc "Adicionar Horário Extra"
-  task add_dailyhour_extra: :environment do
-      DailyHour.create!(
-        shift: 'Diarista',
-        description: 'Colaborador Diarista'
-      )
+    end  
   end
 
   private
