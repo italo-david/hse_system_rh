@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
 
-  devise_for :users, :skip => [:registrations]
+  devise_for :users
   
   resources :colaborattors, except: [:show]
 
