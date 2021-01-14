@@ -48,7 +48,7 @@
                 <td><%= link_to edit_office_path(office), class:"btn btn-icon btn-primary" do %>
                   <i class="far fa-edit"></i>
                 <% end %>
-                <%= link_to office, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-icon btn-danger" do %>
+                <%= link_to office, method: :delete, data: { 'confirm-sawl': 'Are you sure?' }, class:"btn btn-icon btn-danger" do %>
                   <i class="fas fa-times"></i>
                 <% end %>
               </tr>
@@ -61,4 +61,5 @@
       </div>
     </div>
   </div>
+      <button class="btn btn-primary" id="swal-6">Launch</button>
 </section>
