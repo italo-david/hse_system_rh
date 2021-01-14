@@ -12,36 +12,32 @@
                 </ul>
             </div>
         <% end %>
-
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <%= form.label :description, for:"inputDescrip"%>
-              <%= form.text_field :description, id:"inputDescrip", class:"form-control", placeholder:"Insira o Setor.." %>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :description, for:"inputDescrip"%>
+            <%= form.text_field :description, id:"inputDescrip", class:"form-control", placeholder:"Insira o Setor.." %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :collaboratorresp, for:"inputColaborattor" %>
+            <%= form.text_field :collaboratorresp, id:"inputDescrip", class:"form-control", placeholder:"Insira o nome do Colaborador" %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+              <%= form.label :initials, for:"inputAdmis"%>
+              <%= form.text_field :initials, id:"inputAdmis", class:"form-control" , placeholder:"Ex.: APES"%>
             </div>
             <div class="form-group col-md-6">
-              <%= form.label :collaboratorresp, for:"inputColaborattor" %>
-              <%= form.text_field :collaboratorresp, id:"inputDescrip", class:"form-control", placeholder:"Insira o nome do Colaborador" %>
+              <%= form.label :parentsector, for:"inputParentSect"%>
+              <%= form.text_field :parentsector, id:"inputParentSect", class:"form-control", placeholder:"Ex.: APES" %>
             </div>
-          </div>
-          <div class="form-row">
-           <div class="form-group col-md-6">
-                <%= form.label :initials, for:"inputAdmis"%>
-                <%= form.text_field :initials, id:"inputAdmis", class:"form-control" , placeholder:"Ex.: APES"%>
-              </div>
-              <div class="form-group col-md-6">
-                <%= form.label :parentsector, for:"inputParentSect"%>
-                <%= form.text_field :parentsector, id:"inputParentSect", class:"form-control", placeholder:"Ex.: APES" %>
-              </div>
-          </div>
-          <div class="card-footer">
-            <div class="form-group">
-              <%= form.submit class:"btn btn-primary" %>
-              <%= link_to sectors_path, class:"btn btn-icon icon-left btn-light" do %>
-                <i class="fas fa-undo-alt"></i> Voltar
-              <% end %>
-            </div>
-          </div>
-
+        </div>
+        <div class="form-group">
+          <%= form.submit class:"btn btn-primary" %>
+          <%= link_to sectors_path, class:"btn btn-icon icon-left btn-light" do %>
+            <i class="fas fa-undo-alt"></i> Voltar
+          <% end %>
+        </div>
       <% end %>
  </div>
 </div>

@@ -11,7 +11,7 @@ class CreateParkings < ActiveRecord::Migration[5.2]
       t.integer :status
       t.text :notes
       t.bigint :sei
-      t.references :colaborattor, foreign_key: true
+      t.references :colaborattor, foreign_key: true 
 
       t.timestamps
     end
